@@ -1,19 +1,22 @@
 from django.shortcuts import render, redirect  
-from employee.forms import EmployeeForm  
-from employee.models import Employee  
+from .forms import EmployeeForm  
+from .models import Employee  
 # Create your views here.
 
 def index(request):  
     #employees = Employee.objects.all()  
     return render(request,"index.html")  
 
-def add(request):  
+def create(request):
+    print(request.POST)
+    form = EmployeeForm(request.POST or None)
+    
     if request.method == "POST":  
         form = EmployeeForm(request.POST)  
         if form.is_valid():  
             try:  
                 form.save()  
-                return redirect('/')  
+                return redirect('/list')  
             except:  
                 pass  
     else:  

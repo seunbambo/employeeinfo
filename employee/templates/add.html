@@ -1,40 +1,16 @@
 {% extends "base.html" %}
-{% block head_title %}Update{% endblock %}
+{% block head_title %}Add{% endblock %}
 
 {% block content %}
 <a class="btn btn-default btn-lg mb-3" href="/" role="button">Home</a>
-    <form method="POST" class="post-form" action="/add" enctype="multipart/form-data">
+    <form method="POST" action="/add" enctype="multipart/form-data">
 
         {% csrf_token %}
-        
-        <div class="container">
-            <br>
-            <div class="form-group row">
-                <label class="col-sm-1 col-form-label"></label>
-                <div class="col-sm-4">
-                    <h3>Add New Employee</h3>
-                </div>
-            </div>
-           
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Employee Name:</label>
-                <div class="col-sm-4">
-                    {{ form.employee_name }}
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Employee Email:</label>
-                <div class="col-sm-4">
-                    {{ form.employee_email }}
-                </div>
-            </div>
+
+        {{form.as_p}}
             
-            <div class="form-group row">
-                <label class="col-sm-1 col-form-label"></label>
-                <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+               
+        
     </form>
 {% endblock %}
