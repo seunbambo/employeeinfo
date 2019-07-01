@@ -8,7 +8,7 @@ def index(request):
     return render(request,"index.html")  
 
 def create(request):
-    print(request.POST)
+    #print(request.POST)
     form = EmployeeForm(request.POST or None)
     
     if request.method == "POST":  
